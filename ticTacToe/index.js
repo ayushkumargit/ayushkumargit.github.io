@@ -17,14 +17,14 @@ let changeTurn = () => {
 chekWin = () => {
     let boxText = document.getElementsByClassName('boxText')
     let wins = [
-        [0, 1, 2 , 5 ,4.5 , 0],
-        [3, 4, 5 , 5 ,14.5, 0],
-        [6, 7, 8 , 5 ,24.5, 0],
-        [0, 3, 6 , -5,15, 90],
-        [1, 4, 7 , 5 ,15, 90],
-        [2, 5, 8 , 15,15, 90],
-        [0, 4, 8 , 5 ,15, 45],
-        [2, 4, 6 , 5 ,15,135]
+        [0, 1, 2 , 5 ,4.5 , 0, 8 ,11.5 , 0],
+        [3, 4, 5 , 5 ,14.5, 0, 8 , 41.5 , 0],
+        [6, 7, 8 , 5 ,24.5, 0 , 8 , 71.5, 0],
+        [0, 3, 6 , -5,15, 90 , -20 , 42.5 ,90],
+        [1, 4, 7 , 5 ,15, 90 , 10, 42.5 , 90],
+        [2, 5, 8 , 15,15, 90 , 41 ,42.5 ,90],
+        [0, 4, 8 , 5 ,15, 45 , 10, 42.5 , 45],
+        [2, 4, 6 , 5 ,15,135 ,10 ,42.5 , 135]
 
     ]
     wins.forEach(e => {
@@ -33,9 +33,15 @@ chekWin = () => {
             isgameover = true;
             document.querySelector('.imgBox').getElementsByTagName('img')[0].style.width = ' 200px';
             let x= window.matchMedia("screen and (max-width: 800px)")
-            document.querySelector('.line').style.width = '20vw'
-            document.querySelector('.line').style.transform = `translate(${e[3]}vw , ${e[4]}vw) rotate(${e[5]}deg)`
-            
+            if (x.matches) {
+                document.querySelector('.line').style.width = '70vw'
+                document.querySelector('.line').style.transform = `translate(${e[6]}vw , ${e[7]}vw) rotate(${e[8]}deg)`
+            } else {
+                document.querySelector('.line').style.width = '20vw'
+                document.querySelector('.line').style.transform = `translate(${e[3]}vw , ${e[4]}vw) rotate(${e[5]}deg)`
+                
+            }
+            gameOver.play()
         }
     })
 }
